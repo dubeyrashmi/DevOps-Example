@@ -9,10 +9,7 @@ node {
  
     def dockerImageTag = "devopsexample${env.BUILD_NUMBER}"
 
-    tools {
-           maven 'mvnHome'
-           jdk   'jdk1.8'
-         }
+
     
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
@@ -20,7 +17,7 @@ node {
       // Get the Maven tool.
       // ** NOTE: This 'maven-3.5.2' Maven tool must be configured
       // **       in the global configuration.           
-      //mvnHome = tool 'maven-3.8.1'
+      mvnHome = tool 'MAVEN3'
     }    
   
     stage('Build Project') {
