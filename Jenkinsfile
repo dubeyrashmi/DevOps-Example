@@ -66,7 +66,7 @@ node {
 	  sh "docker run --name devopsexample -d -p 2222:2222 devopsexample:${env.BUILD_NUMBER}"
 
 	  //sh "docker push http://0.0.0.0:8081/repository/maven-nexus-repo/devopsexample:${env.BUILD_NUMBER}"
-	  sh "docker push http://0.0.0.0:8081/devopsexample:${env.BUILD_NUMBER}"
+	  sh "docker push http://0.0.0.0:8081/#admin/repository/repositories:maven-nexus-repo/devopsexample:${env.BUILD_NUMBER}"
 	  
 	  // docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
       //    dockerImage.push("${env.BUILD_NUMBER}")
