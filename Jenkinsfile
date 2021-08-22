@@ -2,6 +2,8 @@ node {
     // reference to maven
     // ** NOTE: This 'maven-3.5.2' Maven tool must be configured in the Jenkins Global Configuration.   
     def mvnHome = tool 'MAVEN3'
+    def dockerHome = tool 'MyDocker'
+
 
     // holds reference to docker image
     def dockerImage
@@ -21,7 +23,12 @@ node {
       // substitution is done by shell script using environment
       sh '$JAVA_HOME/bin/java -version'
 
-
+    stage('Initialize')
+            {
+                def dockerHome = tool 'MyDocker'
+                //def mavenHome  = tool 'MyMaven'
+                env.PATH = "${dockerHome}/bin:${env.PATH}"
+            }
     
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
