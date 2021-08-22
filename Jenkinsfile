@@ -9,7 +9,10 @@ node {
  
     def dockerImageTag = "devopsexample${env.BUILD_NUMBER}"
 
+    tools {
+        jdk 'JAVA_HOME'
 
+      }
     
     stage('Clone Repo') { // for display purposes
       // Get some code from a GitHub repository
