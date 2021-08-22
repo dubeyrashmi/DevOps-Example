@@ -9,6 +9,18 @@ node {
  
     def dockerImageTag = "devopsexample${env.BUILD_NUMBER}"
 
+    jdk = tool name: 'JDK8'
+      env.JAVA_HOME = "${jdk}"
+
+      echo "jdk installation path is: ${jdk}"
+
+      // next 2 are equivalents
+      sh "${jdk}/bin/java -version"
+
+      // note that simple quote strings are not evaluated by Groovy
+      // substitution is done by shell script using environment
+      sh '$JAVA_HOME/bin/java -version'
+
 
     
     stage('Clone Repo') { // for display purposes
