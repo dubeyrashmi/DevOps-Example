@@ -59,8 +59,8 @@ node {
       echo "Docker Image Tag Name: ${dockerImageTag}"
 	  
 	  //docker ps -q --filter "name=devopsexample" | grep -q . && docker stop devopsexample && docker rm -fv devopsexample
-	   docker stop devopsexample || true
-	   docker rm -f devopsexample || true
+	   sh "docker stop devopsexample || true"
+	   sh "docker rm devopsexample || true"
 
 	  
 	  sh "docker run --name devopsexample -d -p 2222:2222 devopsexample:${env.BUILD_NUMBER}"
