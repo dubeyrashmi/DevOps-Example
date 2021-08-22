@@ -28,6 +28,7 @@ node {
                 def dockerHome = tool 'MyDocker'
                 //def mavenHome  = tool 'MyMaven'
                 env.PATH = "${dockerHome}/bin:${env.PATH}"
+
             }
     
     stage('Clone Repo') { // for display purposes
@@ -57,9 +58,10 @@ node {
 		
       echo "Docker Image Tag Name: ${dockerImageTag}"
 	  
-	  sh "docker stop devopsexample"
+	  docker stop devopsexample && echo "container devopsexample stop" || echo "container devopsexample does not exist"
 	  
-	  sh "docker rm devopsexample"
+	  docker rm -f devopsexample && echo "container devopsexample removed" || echo "container devopsexample does not exist"
+
 	  
 	  sh "docker run --name devopsexample -d -p 2222:2222 devopsexample:${env.BUILD_NUMBER}"
 	  
