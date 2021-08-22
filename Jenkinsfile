@@ -34,10 +34,7 @@ node {
   
     stage('Build Project') {
 
-      tools {
-              jdk 'JAVA_HOME'
 
-            }
       // build project via maven
       sh "'${mvnHome}/bin/mvn' clean install"
     }
