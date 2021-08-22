@@ -58,9 +58,7 @@ node {
 		
       echo "Docker Image Tag Name: ${dockerImageTag}"
 	  
-	  docker stop devopsexample && echo "container devopsexample stop" || echo "container devopsexample does not exist"
-	  
-	  docker rm -f devopsexample && echo "container devopsexample removed" || echo "container devopsexample does not exist"
+	  docker ps -q --filter "name=devopsexample" | grep -q . && docker stop devopsexample && docker rm -fv devopsexample
 
 	  
 	  sh "docker run --name devopsexample -d -p 2222:2222 devopsexample:${env.BUILD_NUMBER}"
