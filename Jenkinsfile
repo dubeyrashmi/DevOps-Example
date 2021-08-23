@@ -63,10 +63,12 @@ node {
 	   sh "docker rm devopsexample || true"
 
 	  //docker run -d -p 8081:8081 -p 8082:8082 --name nexus sonatype/nexus3:3.14.0
-	  sh "docker run --name devopsexample -d -p 2222:2222 devopsexample:${env.BUILD_NUMBER}"
+	  //docker run -d -p 8081:8081 -p 8082:8082 --name nexus sonatype/nexus3:3.14.0
+	  sh "docker run --name devopsexample -d -p 8081:8081 -p 8082:8082 devopsexample:${env.BUILD_NUMBER}"
 
 	  //sh "docker push http://0.0.0.0:8081/repository/maven-nexus-repo/devopsexample:${env.BUILD_NUMBER}"
-	  sh "docker push http://0.0.0.0:2222/repository/nexus_docker_test/devopsexample:${env.BUILD_NUMBER}"
+
+	  sh "docker push http://0.0.0.0:8082/repository/nexus_docker_test/devopsexample:${env.BUILD_NUMBER}"
 	  
 	  // docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
       //    dockerImage.push("${env.BUILD_NUMBER}")
