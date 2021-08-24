@@ -64,7 +64,7 @@ node {
 
 	  //docker run -d -p 8081:8081 -p 8082:8082 --name nexus sonatype/nexus3:3.14.0
 	  //docker run -d -p 8081:8081 -p 8082:8082 --name nexus sonatype/nexus3:3.14.0
-	  sh "docker run --name devopsexample -d -p 8081:8081 -p 8082:8082 devopsexample:${env.BUILD_NUMBER}"
+	  sh "docker run --name devopsexample -d -p 2222:2222 -p 8082:8082 devopsexample:${env.BUILD_NUMBER}"
 
 	  //sh "docker push http://0.0.0.0:8081/repository/maven-nexus-repo/devopsexample:${env.BUILD_NUMBER}"
 
